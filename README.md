@@ -10,6 +10,6 @@ Edgar-Yaset Caicedo1+, Kelly Charniga2+, Amanecer Rueda1, Ilaria Dorigatti2, Yar
 3. Department of Zoology, University of Oxford, Oxford, UK
 4. Department of Research in Virology and Biotechnology, Gorgas Memorial Institute of Health Studies, Panama City, Panama
 
-+ These authors contributed equality to this work
+_+_ These authors contributed equality to this work
 
-* Correspondence to zulma.cucunuba@imperial.ac.uk
+_*_ Correspondence to zulma.cucunuba@imperial.ac.uk
