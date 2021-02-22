@@ -1,0 +1,203 @@
+IQ-TREE multicore version 1.6.11 for Linux 64-bit built Jun  6 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    fermat (AVX2, FMA3, 1009 GB RAM)
+Command: ../../iqtree -s 1-65DEF-dna.phy -st DNA -m GTR+I+G4+F -bb 2000 -alrt 2000
+Seed:    261845 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sat Jan 11 15:57:19 2020
+Kernel:  AVX+FMA - 1 threads (128 CPU cores detected)
+
+HINT: Use -nt option to specify number of threads because your CPU has 128 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file 1-65DEF-dna.phy ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 65 sequences with 11058 columns, 1289 distinct patterns
+2106 parsimony-informative, 521 singleton sites, 8431 constant sites
+                     Gap/Ambiguity  Composition  p-value
+   1  BOL_FSB0311_2002       0.12%    passed     99.20%
+   2  BOL_FSB0319_2002       0.04%    passed     99.60%
+   3  BOL_FSB1131_2006       0.04%    passed     99.95%
+   4  BOL_FVB0069_2006       0.09%    passed     99.79%
+   5  BOL_FVB0112_2006       0.04%    passed     99.16%
+   6  BOL_Uruma_1955         0.18%    passed     97.70%
+   7  BRA_Acre27_2004        0.12%    passed     99.94%
+   8  BRA_BeAn337622_1978    0.04%    passed     99.76%
+   9  BRA_BeAn343102_1978    0.04%    passed     99.72%
+  10  BRA_BeAr20290_1960     0.04%    passed     97.35%
+  11  BRA_BeAr30853_1961     0.04%    passed     96.60%
+  12  BRA_BeAr344910_1978    0.04%    passed     99.79%
+  13  BRA_BeAr505411_1991    0.00%    passed     99.02%
+  14  BRA_BeAr505578_1991    0.03%    passed     99.66%
+  15  BRA_BeAr757954_2011    0.04%    passed     99.48%
+  16  BRA_BeH186258_1970     0.04%    passed     94.59%
+  17  BRA_BeH256_1955        0.04%    passed     97.45%
+  18  BRA_BeH342916_1978     0.04%    passed     99.78%
+  19  BRA_BeH343148_1978     0.04%    passed     99.76%
+  20  BRA_BeH343155_1978     0.05%    passed     99.72%
+  21  BRA_BeH394885_1981     0.04%    passed     98.84%
+  22  BRA_BeH407_1955        0.05%    passed     95.25%
+  23  BRA_BeH428890_1984     0.04%    passed     96.66%
+  24  BRA_BeH473130_1988     0.04%    passed     97.39%
+  25  BRA_BeH504639_1991     0.04%    passed     97.38%
+  26  BRA_BeH505465_1991     0.03%    passed     99.21%
+  27  BRA_BeH506151_1991     0.05%    passed     99.49%
+  28  BRA_BeH743921_1991     0.04%    passed     99.26%
+  29  BRA_BeH744141_2008     0.04%    passed     99.26%
+  30  BRA_BeH744173_2008     0.04%    passed     99.55%
+  31  BRA_BeH758762_2012     0.04%    passed     98.06%
+  32  BRA_BeH792430_2012     0.04%    passed     99.36%
+  33  BRA_H307_2015          0.09%    passed     96.62%
+  34  BRA_LPV01_2014         0.04%    passed     98.33%
+  35  FRG_BNI-1_2013         0.04%    passed    100.00%
+  36  FRG_MAYLC-1996         0.04%    passed     98.56%
+  37  HAI_0380_2014          0.04%    passed     98.10%
+  38  HAI_0729_2014          0.04%    passed     98.36%
+  39  HAI_0737_2014          0.04%    passed     98.10%
+  40  HAI_1_2014             0.04%    passed     97.83%
+  41  HAI_1_2015             0.04%    passed     93.84%
+  42  PER_ARV0565_1995       0.04%    passed     99.28%
+  43  PER_FMD0641_2005       0.04%    passed     99.98%
+  44  PER_FMD3213_2010       0.04%    passed     67.12%
+  45  PER_FPI0179_2011       0.09%    passed     98.08%
+  46  PER_FPI1738_2011       0.04%    passed     99.79%
+  47  PER_FPI1761_2011       0.13%    passed     99.25%
+  48  PER_FPI1766_2011       0.04%    passed     99.84%
+  49  PER_FPY0046_2011       0.04%    passed     99.76%
+  50  PER_FPY0122_2011       0.04%    passed     99.69%
+  51  PER_IQE2777_2006       0.04%    passed     97.40%
+  52  PER_IQT4235_1997       0.04%    passed     97.69%
+  53  PER_IQU2950_2000       0.05%    passed     99.21%
+  54  PER_IQU3056_2000       0.04%    passed     96.92%
+  55  PER_OBS2209_1955       0.15%    passed     98.66%
+  56  PER_Ohio_1995          0.04%    passed     99.01%
+  57  TRI_TRVL15537_1957     0.14%    passed     85.77%
+  58  TRI_TRVL_4675_1954     0.04%    passed     84.42%
+  59  VEN_1_2016             0.04%    passed     99.38%
+  60  VEN_MAYV11A_2010       0.04%    passed     99.67%
+  61  VEN_MAYV12A_2010       0.04%    passed     99.67%
+  62  VEN_MAYV13A_2010       0.04%    passed     99.56%
+  63  VEN_MAYV14A_2010       0.04%    passed     99.60%
+  64  VEN_MAYV15A_2010       0.04%    passed     99.60%
+  65  VEN_MAYV16A_2010       0.04%    passed     99.70%
+****  TOTAL                  0.05%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: HAI_0737_2014 is identical to HAI_0380_2014 but kept for subsequent analysis
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.007 seconds
+Generating 2000 samples for ultrafast bootstrap (seed: 261845)...
+
+NOTE: 20 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+Thoroughly optimizing +I+G parameters from 10 start values...
+Init pinv, alpha: 0.000, 1.000 / Estimate: 0.000, 0.215 / LogL: -38723.149
+Init pinv, alpha: 0.085, 1.000 / Estimate: 0.084, 0.261 / LogL: -38723.308
+Init pinv, alpha: 0.169, 1.000 / Estimate: 0.169, 0.321 / LogL: -38723.515
+Init pinv, alpha: 0.254, 1.000 / Estimate: 0.255, 0.405 / LogL: -38723.541
+Init pinv, alpha: 0.339, 1.000 / Estimate: 0.341, 0.532 / LogL: -38722.805
+Init pinv, alpha: 0.424, 1.000 / Estimate: 0.426, 0.746 / LogL: -38720.773
+Init pinv, alpha: 0.508, 1.000 / Estimate: 0.511, 1.174 / LogL: -38717.189
+Init pinv, alpha: 0.593, 1.000 / Estimate: 0.589, 2.345 / LogL: -38714.006
+Init pinv, alpha: 0.678, 1.000 / Estimate: 0.610, 3.109 / LogL: -38714.696
+Init pinv, alpha: 0.762, 1.000 / Estimate: 0.610, 3.103 / LogL: -38714.853
+Optimal pinv,alpha: 0.589, 2.345 / LogL: -38714.006
+
+Parameters optimization took 10.654 sec
+Computing ML distances based on estimated model parameters... 0.068 sec
+Computing BIONJ tree...
+0.038 seconds
+Log-likelihood of BIONJ tree: -38900.821
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 1.167 second
+Computing log-likelihood of 98 initial trees ... 3.028 seconds
+Current best score: -38645.924
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -38645.656
+UPDATE BEST LOG-LIKELIHOOD: -38645.655
+BETTER TREE FOUND at iteration 3: -38645.654
+BETTER TREE FOUND at iteration 4: -38645.654
+BETTER TREE FOUND at iteration 8: -38645.654
+Iteration 10 / LogL: -38645.658 / Time: 0h:0m:19s
+Iteration 20 / LogL: -38645.654 / Time: 0h:0m:22s
+Finish initializing candidate tree set (16)
+Current best tree score: -38645.654 / CPU time: 11.759
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+UPDATE BEST LOG-LIKELIHOOD: -38645.652
+Iteration 30 / LogL: -38645.656 / Time: 0h:0m:26s (0h:1m:12s left)
+UPDATE BEST LOG-LIKELIHOOD: -38645.651
+Iteration 40 / LogL: -38645.667 / Time: 0h:0m:30s (0h:0m:53s left)
+Iteration 50 / LogL: -38645.655 / Time: 0h:0m:34s (0h:0m:41s left)
+Log-likelihood cutoff on original alignment: -38680.178
+Iteration 60 / LogL: -38645.659 / Time: 0h:0m:38s (0h:0m:31s left)
+UPDATE BEST LOG-LIKELIHOOD: -38645.650
+Iteration 70 / LogL: -38645.657 / Time: 0h:0m:42s (0h:0m:23s left)
+UPDATE BEST LOG-LIKELIHOOD: -38645.648
+Iteration 80 / LogL: -38645.650 / Time: 0h:0m:46s (0h:0m:16s left)
+UPDATE BEST LOG-LIKELIHOOD: -38645.647
+Iteration 90 / LogL: -38645.659 / Time: 0h:0m:50s (0h:0m:10s left)
+Iteration 100 / LogL: -38645.657 / Time: 0h:0m:54s (0h:0m:4s left)
+Log-likelihood cutoff on original alignment: -38681.148
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.996
+TREE SEARCH COMPLETED AFTER 109 ITERATIONS / Time: 0h:0m:58s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -38645.647
+2. Current log-likelihood: -38645.625
+3. Current log-likelihood: -38645.604
+4. Current log-likelihood: -38645.585
+5. Current log-likelihood: -38645.567
+6. Current log-likelihood: -38645.551
+7. Current log-likelihood: -38645.536
+8. Current log-likelihood: -38645.523
+9. Current log-likelihood: -38645.510
+10. Current log-likelihood: -38645.499
+11. Current log-likelihood: -38645.489
+Optimal log-likelihood: -38645.478
+Rate parameters:  A-C: 1.03890  A-G: 9.20008  A-T: 1.89745  C-G: 0.25042  C-T: 23.08391  G-T: 1.00000
+Base frequencies:  A: 0.274  C: 0.251  G: 0.259  T: 0.215
+Proportion of invariable sites: 0.581
+Gamma shape alpha: 2.262
+Parameters optimization took 11 rounds (0.927 sec)
+BEST SCORE FOUND : -38645.478
+
+Testing tree branches by SH-like aLRT with 2000 replicates...
+10.566 sec.
+Creating bootstrap support values...
+Split supports printed to NEXUS file 1-65DEF-dna.phy.splits.nex
+Total tree length: 0.476
+
+Total number of iterations: 109
+CPU time used for tree search: 46.364 sec (0h:0m:46s)
+Wall-clock time used for tree search: 46.878 sec (0h:0m:46s)
+Total CPU time used: 69.108 sec (0h:1m:9s)
+Total wall-clock time used: 69.880 sec (0h:1m:9s)
+
+Computing bootstrap consensus tree...
+Reading input file 1-65DEF-dna.phy.splits.nex...
+65 taxa and 252 splits.
+Consensus tree written to 1-65DEF-dna.phy.contree
+Reading input trees file 1-65DEF-dna.phy.contree
+Log-likelihood of consensus tree: -38645.481
+
+Analysis results written to: 
+  IQ-TREE report:                1-65DEF-dna.phy.iqtree
+  Maximum-likelihood tree:       1-65DEF-dna.phy.treefile
+  Likelihood distances:          1-65DEF-dna.phy.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          1-65DEF-dna.phy.splits.nex
+  Consensus tree:                1-65DEF-dna.phy.contree
+  Screen log file:               1-65DEF-dna.phy.log
+
+Date and Time: Sat Jan 11 15:58:29 2020

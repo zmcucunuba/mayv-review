@@ -31,12 +31,13 @@ dat$test[dat$test %in% c("RT-PCR")] <- 'PCR'
 dat$zone[dat$zone == 'mixed'] <- 'unknown'
 
 dat <- filter (dat, test != 'HI')
+
 p1 <-
   ggplot(data = dat, aes(x = year, y = PointEst))+
   geom_pointrange(aes(x = year, y = PointEst, ymin = Lower, ymax = Upper, fill = test),
                   position=position_jitter(width=0.5),
                   colour = 'black', shape = 21, size = 2) +
-  theme_classic(30) +
+  theme_classic(40) +
   labs(fill = "") +
   xlab("") +
   ylab("proportion of positives") +
@@ -44,7 +45,7 @@ p1 <-
   coord_flip() +
   theme(legend.position = 'bottom') +
   theme(strip.text.y = element_text(angle = 0)) +
-  ylim (c(0,.4)) +
+  # ylim (c(0,.4)) +
   ggtitle("Hospital based studies")
 
 
@@ -57,15 +58,15 @@ crosssect <- cbind(cross_sectional,conf)
 ###
 crosssect$diagnostic_method[crosssect$diagnostic_method == "IgG ELISA and PRNT"] <- 'ELISA and PRNT'
 crosssect$year <- factor(crosssect$year_max, levels = rev(unique(crosssect$year_max)))
-dat <- crosssect
-dat$test <- dat$diagnostic_method
+dat2 <- crosssect
+dat2$test <- dat2$diagnostic_method
 
 p2 <-
-  ggplot(dat)+
+  ggplot(dat2)+
   geom_pointrange(aes(x = year, y = PointEst, ymin = Lower, ymax = Upper, fill = test),
                   position=position_jitter(width=0.5),
                   colour = 'black', shape = 21, size = 2) +
-  theme_classic(30) +
+  theme_classic(40) +
   labs(fill = "") +
   xlab("") +
   ylab("seroprevalence") +
@@ -75,17 +76,19 @@ p2 <-
   theme(strip.text.y = element_text(angle = 0)) +
   scale_fill_manual(values = c('#66c2a5', '#fc8d62', '#8da0cb')) +
   ylim (c(0,1))+
-  ggtitle("Population based studied")
+  ggtitle("Population based studies")
 
 
 
 
 
-png(file = "Figs/Fig3.Humans.png", bg = "transparent",
-    width = 1500, height = 780)
+tiff(file = "Figs/Fig3_mayv_humans.tiff", bg = "transparent",
+     width = 1500 * 1.2, height = 780 * 1.5)
 
 plot_grid(p1, p2, nrow = 1, labels = c('A', 'B'), label_size = 30)
 
 dev.off()
+
+
 
 

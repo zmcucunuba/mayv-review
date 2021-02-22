@@ -1,91 +1,30 @@
-#####FIGURE: EVIDENCE OF MAYARO VIRUS IN HOSPITAL-BASED SURVEILLANCE####
+rm(list = ls())
 
-#Libraries
+library(EpiEstim)
+library(tidyverse)
+library(lubridate)
 library(readxl)
-library(ggplot2)
-library(dplyr)
-library(cowplot)
+library(incidence)
 
-rm(list=ls())
+dat1 <- read_excel('data/outbreak_okinawa1954.xlsx', sheet = 'outbreak')
+incid1 <- rep(dat1$dates, dat1$n_cases)
+incid_object1 <- incidence(incid1, interval = 7)
 
-#LOAD DATA
-all <- read_excel("data/infection_detection.xlsx", 
-                  sheet = "surveillance")
-data <- filter(all, places == "hospital" )
-conf <- data.frame(Hmisc::binconf(data$positive , data$total), method = "exact")
-dat <- cbind(data,conf)
-dat$year <- factor(dat$year_max, levels = rev(sort(unique(dat$year_max))))
-dat$test <- dat$diagnostic_method
-dat$test[dat$test %in% c( "IgM ELISA", 
-                          "IgM MAC-ELISA",
-                          "IgM ELISA and HI",
-                          "IgM EIA-ICC ELISA",
-                          "IgM MAC-ELISA and HI",
-                          "IgM-ELISA")] <- 'IgM' 
-dat$test[dat$test %in% c("Culture, Immunofluoresence assay, RT-PCR",
-                         "Culture, RT PCR, IgM ELISA",
-                         "Culture, RT-PCR, seroconversion of IgM")] <- 'Isolate/PCR/IgM' 
-dat$test[dat$test %in% c("HI seroconversion" )] <- 'HI' 
-dat$test[dat$test %in% c("RT-PCR or IgM ELISA")] <- 'PCR/IgM' 
-dat$test[dat$test %in% c("RT-PCR")] <- 'PCR' 
-dat$zone[dat$zone == 'mixed'] <- 'unknown'
-
-dat <- filter (dat, test != 'HI')
-p1 <-
-  ggplot(data = dat, aes(x = year, y = PointEst))+
-  geom_pointrange(aes(x = year, y = PointEst, ymin = Lower, ymax = Upper, fill = test),
-                  position=position_jitter(width=0.5),
-                  colour = 'black', shape = 21, size = 2) +
+p1 <- plot(incid_object1) +
   theme_classic(30) +
-  labs(fill = "") +
-  xlab("") +
-  ylab("proportion of positives") +
-  facet_grid(Admin0 ~., scales = 'free', space = 'free') +
-  coord_flip() +
-  theme(legend.position = 'bottom') +
-  theme(strip.text.y = element_text(angle = 0)) +
-  ylim (c(0,.4)) +
-  ggtitle("Hospital based studies")
+  ggtitle('Santa Cruz, Bolivia 1954-1955 ') +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1.1))
 
+dat2 <- read_excel('data/outbreak_belterra1978.xlsx', sheet = 'outbreak')
+incid2 <- rep(dat2$dates, dat2$n_cases)
+incid_object2 <- incidence(incid2, interval = 28)
 
-cross_sectional <- read_excel("data/infection_detection.xlsx", sheet = "Cross_sectional2") 
-cross_sectional <- as.data.frame(cross_sectional)
-conf <- data.frame(Hmisc::binconf(cross_sectional$positive , cross_sectional$total), method = "exact")
-crosssect <- cbind(cross_sectional,conf)
-
-
-###
-crosssect$diagnostic_method[crosssect$diagnostic_method == "IgG ELISA and PRNT"] <- 'ELISA and PRNT'
-crosssect$year <- factor(crosssect$year_max, levels = rev(unique(crosssect$year_max)))
-dat <- crosssect
-dat$test <- dat$diagnostic_method
-
-p2 <-
-  ggplot(dat)+
-  geom_pointrange(aes(x = year, y = PointEst, ymin = Lower, ymax = Upper, fill = test),
-                  position=position_jitter(width=0.5),
-                  colour = 'black', shape = 21, size = 2) +
+p2 <- plot(incid_object2) +
   theme_classic(30) +
-  labs(fill = "") +
-  xlab("") +
-  ylab("seroprevalence") +
-  facet_grid(Admin0 ~., scales = 'free', space = 'free') +
-  coord_flip() +
-  theme(legend.position = 'bottom') +
-  theme(strip.text.y = element_text(angle = 0)) +
-  scale_fill_manual(values = c('#66c2a5', '#fc8d62', '#8da0cb')) +
-  ylim (c(0,1))+
-  ggtitle("Population based studied")
+  ggtitle('Belterra, Brazil 1978') +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1.1))
 
 
 
-
-
-png(file = "Figs/Fig3.Humans.png", bg = "transparent",
-    width = 1500, height = 780)
-
-plot_grid(p1, p2, nrow = 1, labels = c('A', 'B'), label_size = 30)
-
-dev.off()
 
 

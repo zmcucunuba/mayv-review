@@ -21,45 +21,58 @@ dat$family_new[is.na(dat$family)]<-  ''
 dat$Idnf <- factor(1:NROW(dat))
 dat$admin0[dat$admin0 == 'Brasil'] <- 'Brazil'
 dat$Class[dat$Class == 'Aves'] <- 'Birds'
+dat$Genus[dat$Genus == "No describe"] <- "Unknown"
+dat$Genus[dat$Genus == "No describe"] <- "Unknown"
 
+
+dat_primates <- dat %>% filter(Order == 'Primates')
+la <- length(unique(dat_primates$Genus))
 p1 <-
-ggplot(dat %>% filter(Order != 'Primates')) +
-  geom_errorbarh(aes(y = Idnf, xmin = Lower,  xmax = Upper), height = .2, show.legend = FALSE) +
-  geom_point(aes(y = Idnf, x = PointEst, fill = admin0), shape = 21, size = 4) + 
-  theme_classic(25) +
-  # theme_bw(25) + 
+  ggplot(dat_primates) +
+  geom_pointrange(aes(y = Genus, x = PointEst, xmin = Lower, xmax = Upper, fill = admin0),
+                  position=position_jitter(height=0.2),
+                  colour = 'black', shape = 21, size = 1) +
+  
+  cowplot::theme_half_open(35) + 
   theme(axis.text.x = element_text(angle = 0)) +
-  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
-  facet_grid(Class+Order~., scales= 'free_y', space="free") +
+  facet_grid(family_new  ~ . , scales= 'free_y', space="free") +
   theme(strip.text.y = element_text(angle = 0)) +
-  xlab("Seroprevalence") +  ylab("Order") +
-  theme(legend.position = 'bottom') +
-  labs(fill = '') +
-  scale_fill_viridis_d() 
+  xlab("Seroprevalence") +  ylab("Genus") +
+  theme(legend.position = 'none') +
+  ggtitle(label = "", subtitle = "(Family)") +
+  
+  labs(fill = '') + 
+  theme(plot.subtitle = element_text(color = "black", hjust=1.3, face="bold")) +
+  scale_fill_viridis_d() +
+  coord_cartesian(xlim = c(0,1))
+
+non_primats <- dat %>% filter(Order != 'Primates')
 
 p2 <-
-  ggplot(dat %>% filter(Order == 'Primates')) +
-  geom_errorbarh(aes(y = Idnf, xmin = Lower,  xmax = Upper), height = .2, show.legend = FALSE) +
-  geom_point(aes(y = Idnf, x = PointEst, fill = admin0), shape = 21, size = 4) + 
-  theme_classic(25) +
-  # theme_bw(25) + 
+  ggplot(non_primats) +
+  cowplot::theme_half_open(35) + 
+  geom_pointrange(aes(y = Order, x = PointEst, xmin = Lower, xmax = Upper, fill = admin0),
+                  position=position_jitter(height=0.2),
+                  colour = 'black', shape = 21, size = 1) +
   theme(axis.text.x = element_text(angle = 0)) +
-  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
-  facet_grid(family + Genus~., scales= 'free_y', space="free") +
+  facet_grid(Class~., scales= 'free_y', space="free") +
   theme(strip.text.y = element_text(angle = 0)) +
-  xlab("Seroprevalence") +  ylab("Family") +
-  theme(legend.position = 'bottom') +
+  xlab("Seroprevalence") +  ylab("Order") +
+  theme(legend.position = 'right') +
   labs(fill = '') +
-  scale_fill_viridis_d()
+  theme(plot.subtitle = element_text(color = "black", hjust=1.25, face="bold")) +
+  ggtitle(label = "", subtitle = "(Class)") +
+  scale_fill_viridis_d() +
+  coord_cartesian(xlim = c(0,1))
 
 
 
 
-  
-png(file = "figs/Fig4.animals.png", 
-    bg = "transparent",
-    width = 1200, height = 1080)
-plot_grid(p1, p2, nrow = 1, labels = c('A', 'B'), label_size = 30)
+png(file = "figs/Fig4_mayv_animals.tiff", 
+    # bg = "transparent",
+    width = 1200 * 2, height = 1080)
+plot_grid(p1, p2, rel_widths = c(1, 1.3), 
+          nrow = 1, labels = c('A', 'B'), label_size = 30, align = "hv")
 dev.off()
 
 
