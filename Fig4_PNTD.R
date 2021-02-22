@@ -31,10 +31,10 @@ p1 <-
   ggplot(dat_primates) +
   geom_pointrange(aes(y = Genus, x = PointEst, xmin = Lower, xmax = Upper, fill = admin0),
                   position=position_jitter(height=0.2),
-                  colour = 'black', shape = 21, size = 1) +
+                  colour = 'black', shape = 21, size = 2) +
   
-  cowplot::theme_half_open(35) + 
-  theme(axis.text.x = element_text(angle = 0)) +
+  cowplot::theme_half_open(55) + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   facet_grid(family_new  ~ . , scales= 'free_y', space="free") +
   theme(strip.text.y = element_text(angle = 0)) +
   xlab("Seroprevalence") +  ylab("Genus") +
@@ -42,7 +42,7 @@ p1 <-
   ggtitle(label = "", subtitle = "(Family)") +
   
   labs(fill = '') + 
-  theme(plot.subtitle = element_text(color = "black", hjust=1.3, face="bold")) +
+  theme(plot.subtitle = element_text(color = "black", hjust=2, face="bold")) +
   scale_fill_viridis_d() +
   coord_cartesian(xlim = c(0,1))
 
@@ -50,17 +50,17 @@ non_primats <- dat %>% filter(Order != 'Primates')
 
 p2 <-
   ggplot(non_primats) +
-  cowplot::theme_half_open(35) + 
+  cowplot::theme_half_open(55) + 
   geom_pointrange(aes(y = Order, x = PointEst, xmin = Lower, xmax = Upper, fill = admin0),
                   position=position_jitter(height=0.2),
-                  colour = 'black', shape = 21, size = 1) +
-  theme(axis.text.x = element_text(angle = 0)) +
+                  colour = 'black', shape = 21, size = 2) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   facet_grid(Class~., scales= 'free_y', space="free") +
   theme(strip.text.y = element_text(angle = 0)) +
   xlab("Seroprevalence") +  ylab("Order") +
   theme(legend.position = 'right') +
   labs(fill = '') +
-  theme(plot.subtitle = element_text(color = "black", hjust=1.25, face="bold")) +
+  theme(plot.subtitle = element_text(color = "black", hjust=2, face="bold")) +
   ggtitle(label = "", subtitle = "(Class)") +
   scale_fill_viridis_d() +
   coord_cartesian(xlim = c(0,1))
@@ -70,9 +70,9 @@ p2 <-
 
 png(file = "figs/Fig4_mayv_animals.tiff", 
     # bg = "transparent",
-    width = 1200 * 2, height = 1080)
-plot_grid(p1, p2, rel_widths = c(1, 1.3), 
-          nrow = 1, labels = c('A', 'B'), label_size = 30, align = "hv")
+    width = 1200 * 2.5, height = 1080 * 2)
+plot_grid(p1, NULL, p2, rel_widths = c(1, 0.2, 1.5), 
+          nrow = 1, labels = c('A', "",  'B'), label_size = 50, align = "hv")
 dev.off()
 
 
