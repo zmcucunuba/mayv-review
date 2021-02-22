@@ -123,7 +123,7 @@ pp <-
 
 
 
-tiff(file = "figs/Fig5.mayv_force-of-infection.tiff", 
+tiff(file = "figs/Fig5_mayv_force-of-infection.tiff", 
     bg = "transparent",
     width = 1500 * 1.5, height = 800 * 1.5)
 pp
