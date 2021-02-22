@@ -60,7 +60,7 @@ p2 <-
   xlab("Seroprevalence") +  ylab("Order") +
   theme(legend.position = 'right') +
   labs(fill = '') +
-  theme(plot.subtitle = element_text(color = "black", hjust=2, face="bold")) +
+  theme(plot.subtitle = element_text(color = "black", hjust=1.7, face="bold")) +
   ggtitle(label = "", subtitle = "(Class)") +
   scale_fill_viridis_d() +
   coord_cartesian(xlim = c(0,1))
