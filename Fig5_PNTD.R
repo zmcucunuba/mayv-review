@@ -119,7 +119,7 @@ pp2 <-
 
 pp <- 
   plot_grid (pp1, NULL, pp2, rel_heights = c(1.3, 0.01, 1.2), 
-             nrow = 3, labels = 'AUTO', label_size = 30, align = "v")
+             nrow = 3, labels = c('A', '', 'B'), label_size = 30, align = "v")
 
 
 
